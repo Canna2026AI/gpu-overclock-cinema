@@ -75,24 +75,6 @@ const signals = [
     image: "/gpu/four-racing.webp",
     alt: "GPU and Four.meme racing drivers high-fiving on the grid",
   },
-  {
-    date: "FIELD SIGNAL",
-    type: "GPU universe",
-    title: "Defy gravity. Own the sky.",
-    copy: "A visual transmission from the GPU × Four.meme world, built around speed, altitude, and shared momentum.",
-    href: LINKS.partnership,
-    image: "/gpu/four-skydive.webp",
-    alt: "GPU and Four.meme skydivers with branded aircraft",
-  },
-  {
-    date: "CULTURE FEED",
-    type: "Community",
-    title: "High performance. Max respect.",
-    copy: "The GPU world keeps expanding—from trading floors and racetracks to the full chaos of internet culture.",
-    href: LINKS.x,
-    image: "/gpu/meme-pizza.webp",
-    alt: "GPU character in a neon meme pizza restaurant",
-  },
 ];
 
 export default function Home() {
@@ -125,8 +107,8 @@ export default function Home() {
         <section className="hero" id="gpu" aria-labelledby="hero-title">
           <Image
             className="hero-image"
-            src="/gpu/hero-city.webp"
-            alt="GPU heroine flying above a glowing city made from graphics cards"
+            src="/gpu/hero-yacht.webp"
+            alt="GPU character seated on a yacht at sunset overlooking the city skyline"
             fill
             priority
             sizes="100vw"
@@ -217,7 +199,7 @@ export default function Home() {
               <p className="section-index">{"// LIVE TRANSMISSIONS"}</p>
               <h2 id="signals-title">SIGNAL<br />TIMELINE</h2>
             </div>
-            <p>Official articles, collaborations, and culture drops. Select any transmission to open its source on X.</p>
+            <p>Two official transmissions. Each card opens its own original post on X.</p>
           </div>
           <SignalTimeline items={signals} />
         </section>

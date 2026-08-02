@@ -4,7 +4,7 @@ GPU is a cinematic, single-page brand site for the `$GPU` Meme × Stock narrativ
 
 ## Live site
 
-- Production: [gpu-overclock-cinema.vercel.app](https://gpu-overclock-cinema.vercel.app)
+- Production: [gpu-overclock.vercel.app](https://gpu-overclock.vercel.app)
 - X: [@GPUonBSC](https://x.com/GPUonBSC)
 - DexScreener: [GPU/NVDAB](https://dexscreener.com/bsc/0x29271ed4b6b8ff41c326c81ca040fd110a4a047e)
 
@@ -28,11 +28,15 @@ npm test
 
 `npm test` runs a production build and the site regression tests.
 
+The committed soundtrack is an original 106.5-second composition. Its deterministic WAV source can be regenerated with `node scripts/generate-soundtrack.mjs` and encoded to MP3 with FFmpeg.
+
 ## Project structure
 
 ```text
 app/                 Next.js page, layout, styles, and interactions
 public/gpu/          Optimized brand artwork
+public/audio/        Original GPU soundtrack
+scripts/             Reproducible soundtrack source generator
 tests/               Content and rendered-output regression tests
 docs/                Product requirements and contributor documentation
 deploy-static/       Lightweight static fallback build

@@ -25,6 +25,7 @@ test("production page has no starter or live-market remnants", async () => {
 test("all optimized production assets exist", async () => {
   const files = [
     "hero-city.webp",
+    "hero-yacht.webp",
     "meme-stock.webp",
     "power-cloud.webp",
     "velocity-truck.webp",
@@ -43,4 +44,7 @@ test("all optimized production assets exist", async () => {
     const asset = await readFile(new URL(`public/gpu/${file}`, root));
     assert.ok(asset.byteLength > 10_000, `${file} should contain optimized artwork`);
   }
+
+  const soundtrack = await readFile(new URL("public/audio/gpu-overclock.mp3", root));
+  assert.ok(soundtrack.byteLength > 1_000_000, "soundtrack should be a complete encoded song");
 });

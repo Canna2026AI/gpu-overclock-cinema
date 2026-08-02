@@ -37,13 +37,16 @@ test("GPU landing page contains the approved story and external destinations", a
   assert.match(completePage, /2083916931472691223/);
   assert.match(completePage, /2083894735920570783/);
   assert.match(completePage, /Copy CA/i);
-  assert.match(completePage, /Enter with sound/i);
+  assert.doesNotMatch(completePage, /Enter with sound|sound-gate|aria-modal="true"/i);
+  assert.match(completePage, /\/audio\/gpu-overclock\.mp3/);
+  assert.match(completePage, /\/gpu\/hero-yacht\.webp/);
 });
 
 test("GPU landing page references every supplied artwork", async () => {
   const page = await source("app/page.tsx");
   const artworks = [
     "hero-city",
+    "hero-yacht",
     "meme-stock",
     "power-cloud",
     "velocity-truck",
@@ -89,7 +92,8 @@ test("filmstrip gallery exposes keyboard and button controls", async () => {
 });
 
 test("signal timeline and soundtrack provide accessible controls", async () => {
-  const [timeline, audio] = await Promise.all([
+  const [page, timeline, audio] = await Promise.all([
+    source("app/page.tsx"),
     source("app/signal-timeline.tsx"),
     source("app/audio-experience.tsx"),
   ]);
@@ -97,8 +101,15 @@ test("signal timeline and soundtrack provide accessible controls", async () => {
   assert.match(timeline, /aria-label="Previous signal"/);
   assert.match(timeline, /aria-label="Next signal"/);
   assert.match(timeline, /event\.key === "ArrowLeft"/);
-  assert.match(audio, /aria-modal="true"/);
   assert.match(audio, /aria-pressed=\{soundOn\}/);
-  assert.match(audio, /new AudioContextClass/);
+  assert.match(audio, /Play GPU soundtrack/);
+  assert.match(audio, /await audio\.play\(\)/);
+  assert.match(audio, /<audio/);
+  assert.doesNotMatch(audio, /sound-gate|AudioContextClass/);
   assert.doesNotMatch(audio, /autoPlay/);
+
+  const signalsBlock = page.match(/const signals = \[(.*?)\n\];/s)?.[1] ?? "";
+  const destinations = [...signalsBlock.matchAll(/href: LINKS\.(\w+)/g)].map((match) => match[1]);
+  assert.equal(destinations.length, 2);
+  assert.equal(new Set(destinations).size, destinations.length, "every signal must have a unique destination");
 });

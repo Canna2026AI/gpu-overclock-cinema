@@ -142,88 +142,6 @@ img {
   text-transform: uppercase;
 }
 
-.sound-gate {
-  position: fixed;
-  z-index: 80;
-  inset: 0;
-  display: grid;
-  min-height: 100svh;
-  overflow: hidden;
-  place-items: center;
-  isolation: isolate;
-  background: #020302;
-}
-
-.sound-gate::before {
-  position: absolute;
-  z-index: -3;
-  inset: -4%;
-  background:
-    linear-gradient(90deg, rgba(2, 3, 2, 0.96), rgba(2, 3, 2, 0.4) 58%, rgba(2, 3, 2, 0.76)),
-    url("/gpu/gpu-moon.webp") center / cover;
-  content: "";
-  animation: gate-breathe 9s ease-in-out infinite alternate;
-}
-
-.sound-gate::after {
-  position: absolute;
-  z-index: -2;
-  inset: 0;
-  background: linear-gradient(0deg, #020302, transparent 45%), radial-gradient(circle at 70% 38%, transparent, rgba(2, 3, 2, 0.54));
-  content: "";
-}
-
-.sound-gate-grid {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  opacity: 0.15;
-  background-image:
-    linear-gradient(rgba(199, 255, 0, 0.2) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(199, 255, 0, 0.2) 1px, transparent 1px);
-  background-size: 68px 68px;
-  mask-image: linear-gradient(90deg, black, transparent 72%);
-}
-
-.sound-gate-inner {
-  width: min(calc(100% - 48px), 1320px);
-}
-
-.sound-gate-kicker {
-  margin: 0 0 22px;
-  color: var(--acid);
-  font-family: var(--font-mono), monospace;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-}
-
-.sound-gate h2 {
-  max-width: 900px;
-  margin: 0;
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(82px, 12vw, 190px);
-  font-weight: 400;
-  line-height: 0.83;
-  letter-spacing: -0.035em;
-}
-
-.sound-gate-inner > p:not(.sound-gate-kicker) {
-  margin: 28px 0 0;
-  color: rgba(243, 245, 235, 0.68);
-  font-size: 16px;
-}
-
-.sound-gate-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 30px;
-}
-
-.sound-gate-actions button {
-  cursor: pointer;
-}
-
 .sound-toggle {
   position: fixed;
   z-index: 32;
@@ -1213,11 +1131,6 @@ footer {
   to { transform: scale(1.06); }
 }
 
-@keyframes gate-breathe {
-  from { transform: scale(1.01); }
-  to { transform: scale(1.055); }
-}
-
 @keyframes sound-wave {
   from { height: 4px; }
   to { height: 14px; }
@@ -1339,7 +1252,7 @@ footer {
 
   .hero-content {
     width: calc(100% - 36px);
-    padding-bottom: 36px;
+    padding-bottom: 88px;
   }
 
   .hero h1 {
@@ -1430,14 +1343,6 @@ footer {
 
   .timeline-copy h3 {
     margin-top: 28px;
-  }
-
-  .sound-gate h2 {
-    font-size: 72px;
-  }
-
-  .sound-gate-actions .button {
-    width: 100%;
   }
 
   .sound-toggle {
