@@ -5,12 +5,15 @@ import test from "node:test";
 const root = new URL("../", import.meta.url);
 
 test("production page has no starter or live-market remnants", async () => {
-  const [page, layout, galleryRail] = await Promise.all([
+  const [page, layout, galleryRail, timeline, contract, audio] = await Promise.all([
     readFile(new URL("app/page.tsx", root), "utf8"),
     readFile(new URL("app/layout.tsx", root), "utf8"),
     readFile(new URL("app/gallery-rail.tsx", root), "utf8"),
+    readFile(new URL("app/signal-timeline.tsx", root), "utf8"),
+    readFile(new URL("app/contract-copy.tsx", root), "utf8"),
+    readFile(new URL("app/audio-experience.tsx", root), "utf8"),
   ]);
-  const completePage = `${page}\n${galleryRail}`;
+  const completePage = `${page}\n${galleryRail}\n${timeline}\n${contract}\n${audio}`;
 
   assert.match(completePage, /THE MEME-STOCK ENGINE/);
   assert.match(completePage, /CONCEPT ART — NOT LIVE MARKET DATA/);
@@ -28,6 +31,12 @@ test("all optimized production assets exist", async () => {
     "culture-workstation.webp",
     "market-concept.webp",
     "yacht.webp",
+    "four-racing.webp",
+    "four-skydive.webp",
+    "meme-pizza.webp",
+    "gpu-moon.webp",
+    "market-room-v2.webp",
+    "logo.png",
   ];
 
   for (const file of files) {

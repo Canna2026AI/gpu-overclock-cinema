@@ -1,11 +1,18 @@
 import Image from "next/image";
+import { AudioExperience } from "./audio-experience";
+import { ContractCopy } from "./contract-copy";
 import { GalleryRail } from "./gallery-rail";
 import { ScrollEffects } from "./scroll-effects";
+import { SignalTimeline } from "./signal-timeline";
 
 const LINKS = {
   x: "https://x.com/GPUonBSC",
   dex: "https://dexscreener.com/bsc/0x29271ed4b6b8ff41c326c81ca040fd110a4a047e",
+  article: "https://x.com/GPUonBSC/status/2083916931472691223",
+  partnership: "https://x.com/GPUonBSC/status/2083894735920570783",
 };
+
+const CONTRACT_ADDRESS = "0x9dbef6496134c151b9f9855cc5a1ee77f0324444";
 
 const chapters = [
   {
@@ -40,29 +47,74 @@ const gallery = [
   { src: "/gpu/power-cloud.webp", caption: "Reach further", alt: "GPU character standing on a graphics card above clouds" },
   { src: "/gpu/velocity-truck.webp", caption: "Driven to lead", alt: "GPU-branded truck moving through mountain roads" },
   { src: "/gpu/culture-workstation.webp", caption: "The builder", alt: "GPU character working on a neon performance computer" },
-  { src: "/gpu/market-concept.webp", caption: "Market room", alt: "Concept artwork of a GPU market dashboard" },
+  { src: "/gpu/market-concept.webp", caption: "Market room", alt: "Concept artwork of a GPU market dashboard", concept: true },
   { src: "/gpu/yacht.webp", caption: "Max life", alt: "GPU character on a yacht at sunset" },
+  { src: "/gpu/four-racing.webp", caption: "One team. One mission.", alt: "GPU and Four.meme racing drivers celebrating together" },
+  { src: "/gpu/four-skydive.webp", caption: "Defy gravity", alt: "GPU and Four.meme skydivers above the clouds" },
+  { src: "/gpu/meme-pizza.webp", caption: "High performance culture", alt: "GPU character entering a neon meme pizza restaurant" },
+  { src: "/gpu/gpu-moon.webp", caption: "Render reality", alt: "GPU community watching a luminous eye-shaped moon above a city" },
+  { src: "/gpu/market-room-v2.webp", caption: "Protocol room", alt: "Concept artwork of a GPU protocol market screen", concept: true },
+];
+
+const signals = [
+  {
+    date: "AUG 02 / 2026",
+    type: "Official article",
+    title: "The Meme-Stock Engine",
+    copy: "The official long-form introduction to $GPU, the AI supercycle, and a new high-velocity meme-stock narrative.",
+    href: LINKS.article,
+    image: "/gpu/gpu-moon.webp",
+    alt: "GPU community beneath a luminous eye-shaped moon",
+  },
+  {
+    date: "AUG 02 / 2026",
+    type: "Collaboration",
+    title: "GPU × Four.meme",
+    copy: "One team. One mission. A new collaboration signal joins GPU performance culture with the Four.meme ecosystem.",
+    href: LINKS.partnership,
+    image: "/gpu/four-racing.webp",
+    alt: "GPU and Four.meme racing drivers high-fiving on the grid",
+  },
+  {
+    date: "FIELD SIGNAL",
+    type: "GPU universe",
+    title: "Defy gravity. Own the sky.",
+    copy: "A visual transmission from the GPU × Four.meme world, built around speed, altitude, and shared momentum.",
+    href: LINKS.partnership,
+    image: "/gpu/four-skydive.webp",
+    alt: "GPU and Four.meme skydivers with branded aircraft",
+  },
+  {
+    date: "CULTURE FEED",
+    type: "Community",
+    title: "High performance. Max respect.",
+    copy: "The GPU world keeps expanding—from trading floors and racetracks to the full chaos of internet culture.",
+    href: LINKS.x,
+    image: "/gpu/meme-pizza.webp",
+    alt: "GPU character in a neon meme pizza restaurant",
+  },
 ];
 
 export default function Home() {
   return (
     <>
       <ScrollEffects />
+      <AudioExperience />
       <a className="skip-link" href="#main">
         Skip to content
       </a>
 
       <header className="site-header">
         <a className="brand" href="#gpu" aria-label="GPU home">
-          GPU<span className="brand-dot">.</span>
+          <Image src="/gpu/logo.png" alt="GPU logo" width={50} height={50} priority />
+          <span>GPU</span>
         </a>
         <nav aria-label="Main navigation">
           <a href="#gpu">GPU</a>
           <a href="#manifesto">Manifesto</a>
+          <a href="#article">Article</a>
+          <a href="#signals">Signals</a>
           <a href="#gallery">Gallery</a>
-          <a href={LINKS.x} target="_blank" rel="noopener noreferrer">
-            X <span aria-hidden="true">↗</span>
-          </a>
         </nav>
         <a className="header-cta" href={LINKS.dex} target="_blank" rel="noopener noreferrer">
           View chart <span aria-hidden="true">↗</span>
@@ -98,6 +150,7 @@ export default function Home() {
               </a>
             </div>
             <p className="pair-line">BSC // GPU / NVDAb // MEME-STOCK</p>
+            <ContractCopy address={CONTRACT_ADDRESS} />
           </div>
           <div className="scroll-cue" aria-hidden="true">
             <span>Scroll to overclock</span>
@@ -129,6 +182,46 @@ export default function Home() {
           </figure>
         </section>
 
+        <section className="article-section" id="article" aria-labelledby="article-title">
+          <div className="article-visual" data-reveal>
+            <Image
+              src="/gpu/gpu-moon.webp"
+              alt="GPU community beneath a luminous eye-shaped moon overlooking a city"
+              fill
+              sizes="(max-width: 840px) 100vw, 55vw"
+            />
+            <div className="article-visual-label">
+              <span>Official transmission</span>
+              <strong>02 / 08 / 2026</strong>
+            </div>
+          </div>
+          <div className="article-copy" data-reveal>
+            <p className="section-index">{"// OFFICIAL X ARTICLE"}</p>
+            <h2 id="article-title">THE MEME-STOCK<br />ENGINE.</h2>
+            <p>
+              $GPU is the premier meme token launched from Four.meme&apos;s new Meme-Stock mechanism,
+              paired directly against tokenized NVIDIA stock ($NVDAb).
+            </p>
+            <p>
+              Bridging Wall Street&apos;s AI supercycle with high-velocity BSC meme liquidity.
+            </p>
+            <a className="button button-primary" href={LINKS.article} target="_blank" rel="noopener noreferrer">
+              Read the full article on X <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </section>
+
+        <section className="timeline-section" id="signals" aria-labelledby="signals-title">
+          <div className="timeline-heading" data-reveal>
+            <div>
+              <p className="section-index">{"// LIVE TRANSMISSIONS"}</p>
+              <h2 id="signals-title">SIGNAL<br />TIMELINE</h2>
+            </div>
+            <p>Official articles, collaborations, and culture drops. Select any transmission to open its source on X.</p>
+          </div>
+          <SignalTimeline items={signals} />
+        </section>
+
         <section className="chapters" id="power" aria-label="GPU visual pillars">
           {chapters.map((chapter, index) => (
             <article className={`chapter chapter-${index + 1}`} key={chapter.label}>
@@ -150,7 +243,7 @@ export default function Home() {
               <p className="section-index">{"// VISUAL ARCHIVE"}</p>
               <h2 id="gallery-title">GPU<br />UNIVERSE</h2>
             </div>
-            <p>Seven frames. One overclocked world.</p>
+            <p>Twelve frames. One overclocked world.</p>
           </div>
           <GalleryRail items={gallery} />
         </section>
@@ -180,9 +273,13 @@ export default function Home() {
       </main>
 
       <footer>
-        <div className="footer-brand">GPU<span>.</span></div>
+        <div className="footer-brand">
+          <Image src="/gpu/logo.png" alt="GPU logo" width={82} height={82} />
+          <span>GPU</span>
+        </div>
         <div className="footer-links">
           <a href={LINKS.x} target="_blank" rel="noopener noreferrer">X / Twitter ↗</a>
+          <a href={LINKS.article} target="_blank" rel="noopener noreferrer">Article ↗</a>
           <a href={LINKS.dex} target="_blank" rel="noopener noreferrer">DexScreener ↗</a>
         </div>
         <p className="disclaimer">

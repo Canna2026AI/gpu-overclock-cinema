@@ -7,6 +7,7 @@ type GalleryItem = {
   src: string;
   caption: string;
   alt: string;
+  concept?: boolean;
 };
 
 type GalleryRailProps = {
@@ -73,7 +74,7 @@ export function GalleryRail({ items }: GalleryRailProps) {
               <span>{String(index + 1).padStart(2, "0")}</span>
               {item.caption}
             </figcaption>
-            {item.src.includes("market-concept") ? (
+            {item.concept ? (
               <p className="concept-label">CONCEPT ART — NOT LIVE MARKET DATA</p>
             ) : null}
           </figure>

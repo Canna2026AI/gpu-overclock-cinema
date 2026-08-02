@@ -15,8 +15,12 @@ export const metadata: Metadata = {
   authors: [{ name: "GPU", url: "https://x.com/GPUonBSC" }],
   creator: "GPU",
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/favicon.png", type: "image/png", sizes: "192x192" },
+      { url: "/gpu/logo.png", type: "image/png", sizes: "400x400" },
+    ],
     shortcut: "/favicon.png",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "GPU — The Meme-Stock Engine",
